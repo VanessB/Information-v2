@@ -1,0 +1,21 @@
+Установить докер:
+
+sudo apt install docker
+sudo docker pull tensorflow/tensorflow:latest-gpu-jupyter
+sudo docker run --gpus all -it -v /home/sirius:/tf/home/sirius -p 8888:8888 tensorflow/tensorflow:latest-gpu-jupyter bash
+
+В образе:
+pip3 install scipy
+pip3 install sklearn
+pip3 install tensorflow_datasets
+pip3 install tensorflow_addons
+pip3 install seaborn
+
+В другом терминале:
+sudo docker commit абракадабра_после_root@ edited/tensorflow:gpu3
+
+Далее каждый раз для запуска образа использовать:
+sudo docker run --gpus all -it -v /home/sirius:/tf/home/sirius -p 8888:8888 edited/tensorflow:gpu3
+
+В образе:
+jupyter notebook --ip 0.0.0.0 --allow-root
